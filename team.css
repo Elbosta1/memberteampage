@@ -76,16 +76,17 @@ html.dark, body.dark, body.dark-mode, [data-theme="dark"] {
     transition: color 0.3s ease;
 }
 
-/* Flexbox layout to center items and naturally wrap */
+/* Grid layout to maintain desktop style across devices */
 .team-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem 2rem;
+    justify-items: center;
 }
 
 .team-member {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -94,8 +95,10 @@ html.dark, body.dark, body.dark-mode, [data-theme="dark"] {
 
 /* Profile image wrapper with glow and border from variables */
 .member-img-wrapper {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    max-width: 150px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
     background-color: var(--team-img-bg);
@@ -194,4 +197,25 @@ html.dark, body.dark, body.dark-mode, [data-theme="dark"] {
 
 .supervisor-card:hover {
     transform: scale(1.2);
+}
+
+/* Mobile Adjustments for 3-column layout */
+@media (max-width: 768px) {
+    .team-grid {
+        gap: 1.5rem 0.5rem;
+    }
+    .member-info h3 {
+        font-size: 0.85rem;
+    }
+    .role {
+        font-size: 0.6rem;
+    }
+    .supervisor-card {
+        transform: scale(1);
+        padding: 0;
+    }
+    .supervisor-card h3 {
+        white-space: normal;
+        font-size: 1rem;
+    }
 }
