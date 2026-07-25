@@ -1,0 +1,221 @@
+/* Import Montserrat and Poppins from Google Fonts (Gilroy is typically premium, added as fallback) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    /* Light mode variables */
+    --team-bg: #ffffff;
+    --team-title: #222222;
+    --team-highlight: #0066cc; /* Blue for light mode */
+    --team-img-bg: #e6e9ee;
+    --team-img-border: transparent;
+    --team-img-glow: transparent;
+    --team-name: #333333;
+    --team-role: #888888;
+    --team-icon: #cccccc;
+    --team-icon-hover: #0077b5;
+}
+
+/* Dark mode overrides (automatic system preference) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --team-bg: #0d0e15; /* Deep dark space background matching the image */
+        --team-title: #ffffff;
+        --team-highlight: #8b5cf6; /* Vibrant purple matching "powered by" */
+        --team-img-bg: #161822; /* Very dark inner circle */
+        --team-img-border: rgba(139, 92, 246, 0.6); /* Purple border ring */
+        --team-img-glow: rgba(139, 92, 246, 0.45); /* Much brighter purple glow */
+        --team-name: #ffffff;
+        --team-role: #9ca3af; /* Muted gray */
+        --team-icon: #4b5563;
+        --team-icon-hover: #8b5cf6; /* Purple hover for links */
+    }
+}
+
+/* Dark mode overrides (for manual class toggling, if you have a dark mode switch on your site) */
+html.dark, body.dark, body.dark-mode, [data-theme="dark"] {
+    --team-bg: #0d0e15;
+    --team-title: #ffffff;
+    --team-highlight: #8b5cf6;
+    --team-img-bg: #161822;
+    --team-img-border: rgba(139, 92, 246, 0.6);
+    --team-img-glow: rgba(139, 92, 246, 0.45);
+    --team-name: #ffffff;
+    --team-role: #9ca3af;
+    --team-icon: #4b5563;
+    --team-icon-hover: #8b5cf6;
+}
+
+/* Team Members Section Styles */
+
+.team-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    font-family: 'Gilroy', 'Montserrat', 'Poppins', sans-serif;
+    background-color: var(--team-bg);
+    transition: background-color 0.3s ease;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.team-header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--team-title);
+    font-weight: 800; /* Extra bold to match the 'Amateur satellite telemetry' heading */
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+/* Highlight text class for the purple accent */
+.highlight {
+    color: var(--team-highlight);
+    transition: color 0.3s ease;
+}
+
+/* Grid layout to maintain desktop style across devices */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2rem;
+    justify-items: center;
+}
+
+.team-member {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Profile image wrapper with glow and border from variables */
+.member-img-wrapper {
+    width: 100%;
+    max-width: 150px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background-color: var(--team-img-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+    /* Subtle border and glow applied via variables (active in dark mode) */
+    /* Layered shadow for a richer neon glow effect */
+    border: 4px solid var(--team-img-border);
+    box-shadow: 0 0 15px var(--team-img-glow), 0 0 30px var(--team-img-glow);
+    
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.team-member:hover .member-img-wrapper {
+    transform: translateY(-5px);
+    /* Intensify layered glow on hover */
+    box-shadow: 0 0 20px var(--team-img-glow), 0 0 45px var(--team-img-glow);
+}
+
+/* Circular profile photos */
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 50%;
+    display: block;
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+}
+
+.member-info h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.15rem;
+    color: var(--team-name);
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.role {
+    color: var(--team-role);
+    font-weight: 500;
+    margin: 0 0 0.8rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--team-icon);
+    transition: color 0.2s ease, transform 0.2s ease;
+    margin-top: auto;
+}
+
+.linkedin-link:hover {
+    color: var(--team-icon-hover);
+    transform: scale(1.1);
+}
+
+/* Supervisor Specific Styles */
+.supervisor-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.supervisor-card {
+    /* Override variables for a grand gold/amber look */
+    --team-img-border: rgba(255, 183, 3, 0.6);
+    --team-img-glow: rgba(255, 183, 3, 0.45);
+    --team-icon-hover: #ffb703;
+    transform: scale(1.15);
+    width: max-content;
+    padding: 0 1rem;
+}
+
+.supervisor-card h3 {
+    white-space: nowrap;
+}
+
+.supervisor-card:hover {
+    transform: scale(1.2);
+}
+
+/* Mobile Adjustments for 3-column layout */
+@media (max-width: 768px) {
+    .team-grid {
+        gap: 1.5rem 0.5rem;
+    }
+    .member-info h3 {
+        font-size: 0.85rem;
+    }
+    .role {
+        font-size: 0.6rem;
+    }
+    .supervisor-card {
+        transform: scale(1);
+        padding: 0;
+    }
+    .supervisor-card h3 {
+        white-space: normal;
+        font-size: 1rem;
+    }
+}
